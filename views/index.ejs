@@ -1,0 +1,55 @@
+
+<%- include('./partials/header')%>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-2">
+<div class="container">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Bloggy</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto ">
+              <li class="nav-item active">
+                <a class="nav-link " href="/">Home </a>
+              </li>
+             
+              </ul>
+        </div>
+         
+    </nav>
+
+</div>
+
+    
+
+<div class="container mt-5 py-5">
+    
+    <h3>All Bglogs &#128519;</h3>
+
+    <% blogs.reverse()%>
+
+<% blogs.forEach(blog => { %>
+  <div class="card mt-3">
+        
+    <div class="card-body">
+      <p class="text-muted">published at: <%= blog.postedAt %></p>
+      <h5 class="card-title"><%= blog.title %></h5>
+      <p class="card-text"><%= blog.content.slice(0, 99) %>....<a href="/blog/<%= blog._id %>">Read More</a></p>
+      <a href="/blog/<%= blog._id %>" class="btn btn-primary">Read More...</a>
+      <a href="/delete/<%= blog._id %>" class="btn btn-danger">Delete</a>
+      <a href="/edit/<%= blog._id %>" class="btn btn-warning">Edit</a>
+    </div>
+  </div>
+
+<%}) %>
+
+
+    
+    
+</div>
+
+<%- include('./partials/footer')%>
+
